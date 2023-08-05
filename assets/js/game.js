@@ -1,24 +1,26 @@
 (() => {
     'use strict'
-    let deck = [];
-    const types = ['C', 'D', 'H', 'S'];
-    const specials = ['J', 'Q', 'K', 'A'];
-    let points = 0;
-    let pcPoints = 0;
+    const types = ['C', 'D', 'H', 'S'],
+        specials = ['J', 'Q', 'K', 'A'],
+        perfectScore = 21;
+    let deck = [],
+        points = 0,
+        pcPoints = 0;
 
     // html references
-    const askBtn = document.querySelector('#btnAsk');
-    const stopBtn = document.querySelector('#btnStop');
-    const newBtn = document.querySelector('#btnNew');
-    let scores = document.querySelectorAll('small');
-    let playerField = document.querySelector('#player-cards');
-    let pcField = document.querySelector('#pc-cards');
-    let playerResult = 0;
-    let pcResult = 0;
-    const perfectScore = 21;
+    const askBtn = document.querySelector('#btnAsk'),
+        stopBtn = document.querySelector('#btnStop'),
+        newBtn = document.querySelector('#btnNew');
+    let scores = document.querySelectorAll('small'),
+        playerField = document.querySelector('#player-cards'),
+        pcField = document.querySelector('#pc-cards'),
+        playerResult = 0,
+        pcResult = 0;
 
     // necessary functions
     const createDeck = () => {
+
+        deck = [];
         for (let i = 2; i <= 10; i++) {
             for (const type of types) {
                 deck.push(i + type);
@@ -29,16 +31,12 @@
                 deck.push(special + type);
             }
         }
-        deck = _.shuffle(deck);
-        return deck;
+        return _.shuffle(deck);
     };
-
-    const MixedDeck = createDeck();
 
     const askCard = (deck) => {
         if (deck.length === 0) throw "There's no cards in the deck";
-        const card = deck.pop();
-        return card;
+        return deck.pop();
     };
 
     const valueCard = (card) => {
@@ -50,7 +48,7 @@
 
     // events
     const playCards = (points, field) => {
-        const card = askCard(MixedDeck);
+        const card = askCard(createDeck());
         points = points + valueCard(card);
         const newCard = document.createElement('img');
         newCard.classList.add('carta');
@@ -89,7 +87,6 @@
     });
 
     newBtn.addEventListener('click', () => {
-        console.log('New game');
         window.location.reload();
     })
 })();
