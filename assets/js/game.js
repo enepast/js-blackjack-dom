@@ -7,6 +7,7 @@ let pcPoints = 0;
 // html references
 const askBtn = document.querySelector('#btnAsk');
 const stopBtn = document.querySelector('#btnStop');
+const newBtn = document.querySelector('#btnNew');
 let scores = document.querySelectorAll('small');
 let playerField = document.querySelector('#player-cards');
 let pcField = document.querySelector('#pc-cards');
@@ -84,3 +85,8 @@ stopBtn.addEventListener('click', () => {
         scores[1].innerText = pcResult + ' -> says: I win 3:)';
     } else scores[1].innerText = pcResult + " -> says: It's a draw :)(";
 });
+
+newBtn.addEventListener('click', () => {
+    console.log('New game');
+    window.location.reload();
+})
