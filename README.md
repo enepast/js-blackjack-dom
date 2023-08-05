@@ -1,1 +1,3 @@
-# JavaScript simple BlackJack game for practicing DOM, Bootstrap and underscoreJs.
+# JavaScript simple BlackJack game.
+
+For practicing DOM, Bootstrap and underscoreJs.
